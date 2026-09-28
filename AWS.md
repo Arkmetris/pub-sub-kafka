@@ -1,10 +1,11 @@
-## Executar na AWS (Cloud9)
+## Executar na AWS (Cloud9 ou Code Server)
 
 ![image](https://user-images.githubusercontent.com/276077/162766448-13e0ebe8-8325-4e32-a8d7-5deff7744c10.png)
 
 * Crie um ambiente no Cloud9 utilizando a instância `m5.large (8 GiB RAM + 2 vCPU)`.
+* Se estiver usando o code server, basta usar o ambiente já instalado. 
 
-1. Baixe o projeto pub-sub para o Cloud9.
+1. Baixe o projeto pub-sub para o Cloud9/Code Server.
 
 ```
 wget https://github.com/rodrigoclira/pub-sub-kafka/archive/refs/heads/main.zip
@@ -45,14 +46,18 @@ unzip main.zip
 sudo docker compose up --build
 ```
 
-3. Acesse a página da aplicação através do botão de `Preview` do Cloud9.
+3. Acesse a página da aplicação através do botão de `Preview` do Cloud9. Se você estiver usando o Code Server, utilize apenas `https://IP-PUBLICO/proxy/8080/` para acessar o serviço de upload.
+
 
 4. Espere o fim da inicialização (quando os logs pararem de atualizar de forma frenética) e visualize a comunicação assíncrona acontecendo.
 
 5. No final, o arquivo que foi enviado para upload e suas versões rotacionadas e em preto e branco, estarão disponíveis na pasta `./appdata/`
 
 
+-------
 ## Executar na AWS (EC2)
+
+Realize esse passo a passo, caso você esteja utilizando o EC2 sem o Cloud9 ou Code Server instalado
 
 * Utilize a instância do tipo `t2.medium`
 

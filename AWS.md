@@ -2,8 +2,8 @@
 
 ![image](https://user-images.githubusercontent.com/276077/162766448-13e0ebe8-8325-4e32-a8d7-5deff7744c10.png)
 
-* Crie um ambiente no Cloud9 utilizando a instância `m5.large (8 GiB RAM + 2 vCPU)`.
-* Se estiver usando o code server, basta usar o ambiente já instalado. 
+> Crie um ambiente no Cloud9 utilizando a instância `m5.large (8 GiB RAM + 2 vCPU)`.
+> Se estiver usando o **Code server**, basta usar o ambiente já instalado. 
 
 1. Baixe o projeto pub-sub para o Cloud9/Code Server.
 

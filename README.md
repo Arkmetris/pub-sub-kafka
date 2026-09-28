@@ -29,6 +29,7 @@ Para executá-lo, basta baixar a pasta do projeto (pub-sub) e executar o comando
 ```
 sudo docker-compose up --build 
 ```
+> Cheque se o seu utilitário funciona com `docker-compose` ou `docker compose`
 
 ![image](https://user-images.githubusercontent.com/276077/162104971-34cde74b-c4f7-4da5-a2da-d18176780838.png)
 O comando cria, inicia e anexa containers a um serviço. O parâmetro --build força o construção da imagem antes da criação do serviço.

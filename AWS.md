@@ -37,7 +37,7 @@ unzip main.zip
       - 8080:5000
 ```
 
-> Por que essa mudança foi necessária?
+> Por que essa mudança foi necessária? Essa mudança é muito importante no Cloud9 pois ele automaticamente redireciona a porta 8080 para a porta 80 (preview)
 
 
 4. Inicialize a composição com o comando abaixo:

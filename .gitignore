@@ -208,3 +208,7 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+notificador/oauth2_creds.json
+notificador/*.token
+appdata

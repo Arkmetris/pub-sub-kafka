@@ -1,18 +1,17 @@
-from PIL import Image, ImageOps
+from PIL import Image, ImageDraw, ImageOps
 import os
 from confluent_kafka import Consumer, KafkaError, Producer
 import json
 import logging
 from time import sleep
 
+OUT_FOLDER = "/processed/text/"
+NEW = "text"
+IN_FOLDER = "/appdata/static/uploads/"
 NOTIFICATION_TOPIC = "notifications"
 
-OUT_FOLDER = "/processed/rotate/"
-NEW = "_rotate"
-IN_FOLDER = "/appdata/static/uploads/"
 
-
-def create_rotate(path_file):
+def create_text(path_file):
     pathname, filename = os.path.split(path_file)
     output_folder = pathname + OUT_FOLDER
 
@@ -20,10 +19,11 @@ def create_rotate(path_file):
         os.makedirs(output_folder)
 
     original_image = Image.open(path_file)
-    transposed = original_image.transpose(Image.Transpose.ROTATE_180)
+    draw = ImageDraw.Draw(original_image)
+    draw.text((0, 0), "Olá, Mundo!", fill="white", font_size=35)
 
     name, ext = os.path.splitext(filename)
-    transposed.save(output_folder + name + NEW + ext)
+    original_image.save(output_folder + name + NEW + ext)
 
 
 # sleep(30)
@@ -31,7 +31,7 @@ def create_rotate(path_file):
 c = Consumer(
     {
         "bootstrap.servers": "kafka1:19091,kafka2:19092,kafka3:19093",
-        "group.id": "rotate-group",
+        "group.id": "text-group",
         "client.id": "client-1",
         "enable.auto.commit": True,
         "session.timeout.ms": 6000,
@@ -52,13 +52,13 @@ try:
             data = json.loads(msg.value())
             filename = data["new_file"]
             logging.warning(f"READING {filename}")
-            create_rotate(IN_FOLDER + filename)
+            create_text(IN_FOLDER + filename)
             producer.produce(
                 NOTIFICATION_TOPIC,
                 value=json.dumps(
                     {
                         "filename": filename,
-                        "operation": "rotacionado",
+                        "operation": "texto inserido",
                     }
                 ),
             )
